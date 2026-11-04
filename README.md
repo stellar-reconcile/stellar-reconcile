@@ -43,7 +43,7 @@ The fetch command produces an envelope containing payments, network, account, co
 - CSV formula prefixes are escaped when exporting reports.
 
 ## Scope and limitations
-Classic payment and path-payment operations only. Soroban/SAC transfers, claimable balances and account-creation funding are excluded. No live network smoke test or on-chain testnet demonstration has been completed. Horizon behavior is currently covered by mocked integration tests. Network pagination defaults to at most 2,000 operations and a request timeout of 15 seconds. Use exported cursors only with an explicitly defined reporting scope; do not treat a partial-history reconciliation as full-account accounting.
+Classic payment and path-payment operations only. Soroban/SAC transfers, claimable balances and account-creation funding are excluded. A native-XLM testnet demonstration is recorded below. Browser verification remains pending; automated tests also cover mocked Horizon behavior. Network pagination defaults to at most 2,000 operations and a request timeout of 15 seconds. Use exported cursors only with an explicitly defined reporting scope; do not treat a partial-history reconciliation as full-account accounting.
 Address format is checked for live fetches; StrKey checksums are not yet validated. Muxed destinations are preserved as M-addresses to prevent accidental matching to a bare G-address, but full muxed routing policy is future work.
 No persistence, date-window UI, authentication or deployed public service. Files are processed in-browser; page reload clears them. Adapter timeouts and rate-limit errors stop ingestion rather than silently producing success.
 
@@ -60,7 +60,7 @@ License: MIT.
 
 ## Reproduce a live testnet demonstration
 
-**Status: pending execution.** No testnet run is claimed by this section.
+**Status: verified.** Public evidence is recorded in the generated section below.
 
 These tools run locally; they do not deploy smart contracts and have no contract IDs.
 A testnet run creates a fresh sender and three recipients, funds the sender through
@@ -84,3 +84,28 @@ offline fixtures until separately demonstrated. Payment Lab's live run exercises
 its reference adapter, not an external application's payment handler.
 
 Testnet HTTPS requests try native Node fetch, then system curl over IPv4 on transport failure. Curl must be installed for fallback; certificate verification remains enabled. Failures report the hostname and underlying transport error codes.
+
+<!-- TESTNET-VERIFICATION:START -->
+## Verified Stellar Testnet run
+
+Verified at: 2026-11-04T20:10:57.932Z
+
+Live testnet integration demonstration of Stellar Reconcile. This project deploys no smart contract and has no contract ID. It runs locally against Testnet, rather than as a hosted service.
+
+- Horizon: https://horizon-testnet.stellar.org
+- Network passphrase: Test SDF Network ; September 2015
+- Public sender: GAIRF4VT22FWINJT7VSVAUN6G7SSL4UYA7OBMPAECUNGXKHLDGX5WXZ7
+- Exact-payment recipient: GCQRWS7N7JABHON463YK3MTMXIJ6Z6JA5HAFPU2DQF3JVHU5GG3BN5GW
+- Partial-payment recipient: GDBFETEBSLOS6K4QEG4TWQY35RT6FVTWSKVUP45EUAPLO23FRB4OWGVC
+- Unpaid recipient: GBJWMLKSLXC43ZJB6RTGCK53V7DXMIO2VTHW66JC5AD5TJGJSPDSFEGU
+
+Confirmed testnet payment transactions:
+- [077d47fb6951e41c644e1c3bb83d63371df0be25ca8957d6c4d27b3b2f44174c](https://stellar.expert/explorer/testnet/tx/077d47fb6951e41c644e1c3bb83d63371df0be25ca8957d6c4d27b3b2f44174c) — ledger 5559875
+- [52fddb1ce64aa880bd6b87478fbdfc255157ad17104acfa72dc792ec9a2ca2c2](https://stellar.expert/explorer/testnet/tx/52fddb1ce64aa880bd6b87478fbdfc255157ad17104acfa72dc792ec9a2ca2c2) — ledger 5559877
+
+Observed results: testnet-exact: paid; testnet-partial: partial; testnet-unpaid: unpaid.
+
+Evidence: [latest.json](docs/testnet/latest.json). Rerun with node scripts/testnet-run.js (Node.js 22+ and Stellar CLI 27+). Fresh test-only identities are temporary and excluded from evidence. Funding uses free Friendbot XLM.
+
+This verifies native XLM exact/partial/unpaid handling. It does not establish live issued-asset, path-payment, muxed-address, Soroban-transfer, failure or concurrency coverage. Offline tests cover additional cases. Testnet resets can remove accounts and history.
+<!-- TESTNET-VERIFICATION:END -->

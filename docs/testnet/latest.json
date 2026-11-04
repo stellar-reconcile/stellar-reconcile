@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "network": "testnet",
+  "networkPassphrase": "Test SDF Network ; September 2015",
+  "horizon": "https://horizon-testnet.stellar.org",
+  "rpc": "https://soroban-testnet.stellar.org",
+  "verifiedAt": "2026-11-04T20:10:57.932Z",
+  "accounts": {
+    "sender": "GAIRF4VT22FWINJT7VSVAUN6G7SSL4UYA7OBMPAECUNGXKHLDGX5WXZ7",
+    "exact": "GCQRWS7N7JABHON463YK3MTMXIJ6Z6JA5HAFPU2DQF3JVHU5GG3BN5GW",
+    "partial": "GDBFETEBSLOS6K4QEG4TWQY35RT6FVTWSKVUP45EUAPLO23FRB4OWGVC",
+    "unpaid": "GBJWMLKSLXC43ZJB6RTGCK53V7DXMIO2VTHW66JC5AD5TJGJSPDSFEGU"
+  },
+  "expected": [
+    {
+      "id": "testnet-exact",
+      "destination": "GCQRWS7N7JABHON463YK3MTMXIJ6Z6JA5HAFPU2DQF3JVHU5GG3BN5GW",
+      "asset": "XLM",
+      "amount": "10.0000000",
+      "memoType": "none",
+      "memo": ""
+    },
+    {
+      "id": "testnet-partial",
+      "destination": "GDBFETEBSLOS6K4QEG4TWQY35RT6FVTWSKVUP45EUAPLO23FRB4OWGVC",
+      "asset": "XLM",
+      "amount": "20.0000000",
+      "memoType": "none",
+      "memo": ""
+    },
+    {
+      "id": "testnet-unpaid",
+      "destination": "GBJWMLKSLXC43ZJB6RTGCK53V7DXMIO2VTHW66JC5AD5TJGJSPDSFEGU",
+      "asset": "XLM",
+      "amount": "30.0000000",
+      "memoType": "none",
+      "memo": ""
+    }
+  ],
+  "payments": [
+    {
+      "id": "23879481294884865",
+      "destination": "GCQRWS7N7JABHON463YK3MTMXIJ6Z6JA5HAFPU2DQF3JVHU5GG3BN5GW",
+      "asset": "XLM",
+      "amount": "10.0000000",
+      "memoType": "none",
+      "memo": "",
+      "successful": true,
+      "transactionHash": "077d47fb6951e41c644e1c3bb83d63371df0be25ca8957d6c4d27b3b2f44174c",
+      "createdAt": "2026-11-04T20:10:15Z"
+    },
+    {
+      "id": "23879489884786689",
+      "destination": "GDBFETEBSLOS6K4QEG4TWQY35RT6FVTWSKVUP45EUAPLO23FRB4OWGVC",
+      "asset": "XLM",
+      "amount": "8.0000000",
+      "memoType": "none",
+      "memo": "",
+      "successful": true,
+      "transactionHash": "52fddb1ce64aa880bd6b87478fbdfc255157ad17104acfa72dc792ec9a2ca2c2",
+      "createdAt": "2026-11-04T20:10:25Z"
+    }
+  ],
+  "transactions": [
+    {
+      "hash": "077d47fb6951e41c644e1c3bb83d63371df0be25ca8957d6c4d27b3b2f44174c",
+      "ledger": 5559875,
+      "createdAt": "2026-11-04T20:10:15Z",
+      "successful": true,
+      "url": "https://stellar.expert/explorer/testnet/tx/077d47fb6951e41c644e1c3bb83d63371df0be25ca8957d6c4d27b3b2f44174c",
+      "horizon": "https://horizon-testnet.stellar.org/transactions/077d47fb6951e41c644e1c3bb83d63371df0be25ca8957d6c4d27b3b2f44174c"
+    },
+    {
+      "hash": "52fddb1ce64aa880bd6b87478fbdfc255157ad17104acfa72dc792ec9a2ca2c2",
+      "ledger": 5559877,
+      "createdAt": "2026-11-04T20:10:25Z",
+      "successful": true,
+      "url": "https://stellar.expert/explorer/testnet/tx/52fddb1ce64aa880bd6b87478fbdfc255157ad17104acfa72dc792ec9a2ca2c2",
+      "horizon": "https://horizon-testnet.stellar.org/transactions/52fddb1ce64aa880bd6b87478fbdfc255157ad17104acfa72dc792ec9a2ca2c2"
+    }
+  ],
+  "verification": {
+    "rows": [
+      {
+        "id": "testnet-exact",
+        "expected": "10.0000000",
+        "received": "10.0000000",
+        "status": "paid",
+        "paymentIds": [
+          "23879481294884865"
+        ]
+      },
+      {
+        "id": "testnet-partial",
+        "expected": "20.0000000",
+        "received": "8.0000000",
+        "status": "partial",
+        "paymentIds": [
+          "23879489884786689"
+        ]
+      },
+      {
+        "id": "testnet-unpaid",
+        "expected": "30.0000000",
+        "received": "0.0000000",
+        "status": "unpaid",
+        "paymentIds": []
+      }
+    ],
+    "exceptions": [],
+    "duplicates": [],
+    "summary": {
+      "paid": 1,
+      "partial": 1,
+      "unpaid": 1
+    }
+  }
+}
