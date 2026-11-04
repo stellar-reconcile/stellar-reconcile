@@ -6,3 +6,7 @@ results.json
 report.csv
 /payments.json
 test-results.txt
+
+testnet-unit-results.txt
+testnet-attempt.log
+.stellar/

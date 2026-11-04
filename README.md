@@ -57,3 +57,28 @@ No persistence, date-window UI, authentication or deployed public service. Files
 ## Next milestones
 See ROADMAP.md. Read CONTRIBUTING.md before opening a pull request.
 License: MIT.
+
+## Reproduce a live testnet demonstration
+
+**Status: pending execution.** No testnet run is claimed by this section.
+
+These tools run locally; they do not deploy smart contracts and have no contract IDs.
+A testnet run creates a fresh sender and three recipients, funds the sender through
+Friendbot, submits native XLM payments, reads them back from Horizon, confirms each
+transaction, and checks exact, partial, and unpaid outcomes.
+
+Requirements: Node.js 22+ and Stellar CLI 27+.
+Run:
+
+```sh
+node scripts/testnet-run.js
+```
+
+Only after all checks succeed, the runner writes public transaction hashes, account
+addresses, ledger numbers, results, and timestamps to docs/testnet/latest.json and
+adds a verified section to this README. Test-only private keys are temporary and
+never included in evidence. Testnet history is periodically reset.
+
+The live run covers native XLM. Additional issued-asset and failure scenarios remain
+offline fixtures until separately demonstrated. Payment Lab's live run exercises
+its reference adapter, not an external application's payment handler.

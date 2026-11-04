@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node --test",
     "demo": "node src/cli.js demo",
-    "start": "node server.js"
+    "start": "node server.js",
+    "testnet": "node scripts/testnet-run.js"
   },
   "engines": {
     "node": ">=22"
