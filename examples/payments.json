@@ -1,0 +1,38 @@
+[
+  {
+    "id": "demo-op-1",
+    "destination": "GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "asset": "XLM",
+    "amount": "10.0000000",
+    "memoType": "text",
+    "memo": "MEM-01",
+    "successful": true
+  },
+  {
+    "id": "demo-op-2",
+    "destination": "GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "asset": "XLM",
+    "amount": "8.0000000",
+    "memoType": "text",
+    "memo": "MEM-02",
+    "successful": true
+  },
+  {
+    "id": "demo-op-1",
+    "destination": "GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "asset": "XLM",
+    "amount": "10.0000000",
+    "memoType": "text",
+    "memo": "MEM-01",
+    "successful": true
+  },
+  {
+    "id": "demo-op-3",
+    "destination": "GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "asset": "XLM",
+    "amount": "10",
+    "memoType": "text",
+    "memo": "UNKNOWN",
+    "successful": true
+  }
+]

@@ -4,5 +4,5 @@ node_modules/
 !.env.example
 results.json
 report.csv
-payments.json
+/payments.json
 test-results.txt
