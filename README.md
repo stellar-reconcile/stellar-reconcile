@@ -82,3 +82,5 @@ never included in evidence. Testnet history is periodically reset.
 The live run covers native XLM. Additional issued-asset and failure scenarios remain
 offline fixtures until separately demonstrated. Payment Lab's live run exercises
 its reference adapter, not an external application's payment handler.
+
+Testnet HTTPS requests try native Node fetch, then system curl over IPv4 on transport failure. Curl must be installed for fallback; certificate verification remains enabled. Failures report the hostname and underlying transport error codes.

@@ -24,7 +24,7 @@ test('saving evidence replaces README section rather than duplicating it',async(
  const temp=await mkdtemp(join(tmpdir(),'testnet-doc-test-')),root=pathToFileURL(temp+'/');
  try{
   await writeFile(join(temp,'README.md'),'# Fixture README\n');
-  await saveEvidence('Fixture project',root,fixture);await saveEvidence('Fixture project',root,fixture);
+  await saveEvidence('Fixture project',root,fixture,{log:()=>{}});await saveEvidence('Fixture project',root,fixture,{log:()=>{}});
   const text=await readFile(join(temp,'README.md'),'utf8');
   assert.equal((text.match(/TESTNET-VERIFICATION:START/g)||[]).length,1);
   assert.equal(JSON.parse(await readFile(join(temp,'docs/testnet/latest.json'),'utf8')).verifiedAt,'fixture-not-live');

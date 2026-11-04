@@ -4,11 +4,12 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {setTimeout as delay} from 'node:timers/promises';
 import {fetchPayments} from '../src/horizon.js';
+import {testnetRequest} from './testnet-request.js';
 export const HORIZON='https://horizon-testnet.stellar.org';
 export const PASSPHRASE='Test SDF Network ; September 2015';
 const RPC='https://soroban-testnet.stellar.org';
 async function json(url){
- const r=await fetch(url,{signal:AbortSignal.timeout(30000)});
+ const r=await testnetRequest(url);
  if(!r.ok)throw Error('Testnet HTTP '+r.status);return r.json();
 }
 export function validateNetwork(root){
@@ -49,7 +50,7 @@ export async function createTestnetFixture(){
   for(const name of names.slice(1)){
    let data;
    for(let attempt=0;attempt<20;attempt++){
-    data=await fetchPayments(accounts[name],{network:'testnet'});
+    data=await fetchPayments(accounts[name],{network:'testnet',fetcher:testnetRequest});
     if(!data.complete)throw Error('Incomplete payment history');
     if(name==='unpaid'||data.payments.length)break;
     await delay(3000);
@@ -91,12 +92,12 @@ export function readmeSection(project,evidence){
  'This verifies native XLM exact/partial/unpaid handling. It does not establish live issued-asset, path-payment, muxed-address, Soroban-transfer, failure or concurrency coverage. Offline tests cover additional cases. Testnet resets can remove accounts and history.',
  '<!-- TESTNET-VERIFICATION:END -->'].join('\n');
 }
-export async function saveEvidence(project,root,evidence){
+export async function saveEvidence(project,root,evidence,{log=console.log}={}){
  const docs=new URL('docs/testnet/',root);await mkdir(docs,{recursive:true});
  await writeFile(new URL('latest.json',docs),JSON.stringify(evidence,null,2)+'\n');
  const path=new URL('README.md',root);let previous=await readFile(path,'utf8');
  previous=previous.replace('No live network smoke test or on-chain testnet demonstration has been completed. Horizon behavior is currently covered by mocked integration tests.', 'A native-XLM testnet demonstration is recorded below. Browser verification remains pending; automated tests also cover mocked Horizon behavior.').replace('No real testnet verification has been performed. Actual network and SDK adapters are planned.', 'Native-XLM testnet ingestion and reference-adapter verification are recorded below. External application and SDK adapters remain planned.').replace('**Status: pending execution.** No testnet run is claimed by this section.', '**Status: verified.** Public evidence is recorded in the generated section below.');
  const block=readmeSection(project,evidence),pattern=/<!-- TESTNET-VERIFICATION:START -->[\s\S]*?<!-- TESTNET-VERIFICATION:END -->/;
  await writeFile(path,pattern.test(previous)?previous.replace(pattern,()=>block):previous.trimEnd()+'\n\n'+block+'\n');
- console.log('Verified evidence saved to docs/testnet/latest.json; README updated.');
+ log('LIVE verification complete: docs/testnet/latest.json and README updated.');
 }
